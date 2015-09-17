@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Object - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link">BasicObject
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-main">#main</a>
+    
+    <li ><a href="#method-i-showUsage">#showUsage</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Object">
+  <h1 id="class-Object" class="class">
+    class Object
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+    <section class="constants-list">
+      <header>
+        <h3>Constants</h3>
+      </header>
+      <dl>
+      
+        <dt id="DATA_ROW">DATA_ROW
+        
+        <dd><p>Formatting for the data rows in the output</p>
+        
+      
+        <dt id="DEFAULT_LOG">DEFAULT_LOG
+        
+        <dd><p>Default log file name if none given on command line</p>
+        
+      
+        <dt id="ENDPOINTS">ENDPOINTS
+        
+        <dd><p>Definition of <a href="Endpoints.html">Endpoints</a> to be processed from
+the log</p>
+        
+      
+        <dt id="TITLE_ROW">TITLE_ROW
+        
+        <dd><p>Formatting for the title rows in the output</p>
+        
+      
+      </dl>
+    </section>
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-main" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">main</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Main entry point of the program</p>
+
+<h4 id="method-i-main-label-Parameters">Parameters<span><a href="#method-i-main-label-Parameters">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>ARGV</code>  - (Optional) the file name to be read.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="main-source">
+            <pre><span class="ruby-comment"># File lib/PlayLabDC.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">main</span>
+    <span class="ruby-comment"># Default argument to the log file if none specified</span>
+    <span class="ruby-constant">ARGV</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-constant">DEFAULT_LOG</span> <span class="ruby-keyword">if</span> <span class="ruby-constant">ARGV</span>.<span class="ruby-identifier">empty?</span>
+
+    <span class="ruby-comment"># Get the name of the logfile to process</span>
+    <span class="ruby-identifier">logfile</span> = <span class="ruby-constant">ARGV</span>[<span class="ruby-value">0</span>]
+
+    <span class="ruby-comment"># show titles and usage if parameter is incorrect</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">showUsage</span>(<span class="ruby-identifier">logfile</span>, <span class="ruby-constant">DEFAULT_LOG</span>)
+        <span class="ruby-comment"># Initialise the Log Processor</span>
+        <span class="ruby-identifier">dc</span> = <span class="ruby-constant">PlayLabDC</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">logfile</span>)
+
+        <span class="ruby-comment"># Process the logfile</span>
+        <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">process_logfile</span>
+
+        <span class="ruby-comment"># Display the results of processing</span>
+        <span class="ruby-identifier">dc</span>.<span class="ruby-identifier">display_results</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-showUsage" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">showUsage</span><span
+            class="method-args">(filename, defaultfn)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Shows the titles, checks the paramters and prints usage if required.</p>
+
+<h4 id="method-i-showUsage-label-Parameters">Parameters<span><a href="#method-i-showUsage-label-Parameters">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>filename</code>  - the file name to be read.</p>
+</li><li>
+<p><code>defaultfn</code> - The default filename if none given on the command
+line.</p>
+</li></ul>
+
+<h4 id="method-i-showUsage-label-Returns">Returns<span><a href="#method-i-showUsage-label-Returns">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>true</code>  - Headings are printed and file can be read.</p>
+</li><li>
+<p><code>false</code> - Headings and usage are printed and the file can NOT be
+read.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="showUsage-source">
+            <pre><span class="ruby-comment"># File lib/PlayLabDC.rb, line 121</span>
+<span class="ruby-keyword">def</span>  <span class="ruby-identifier">showUsage</span>(<span class="ruby-identifier">filename</span>, <span class="ruby-identifier">defaultfn</span>)
+    <span class="ruby-comment"># Emit the Programs Title.</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Developer Challenge from PlayLab&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;--------------------------------&quot;</span>
+    <span class="ruby-identifier">puts</span>
+
+    <span class="ruby-comment"># Check if the logfile exists and is readable</span>
+    <span class="ruby-identifier">readable</span> = (<span class="ruby-constant">File</span>.<span class="ruby-identifier">file?</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-keyword">and</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">filename</span>))
+
+    <span class="ruby-comment"># If the file can not be read then show some usage.</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-keyword">not</span> <span class="ruby-identifier">readable</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;Usage:&quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{$PROGRAM_NAME} &lt;filename&gt;&quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;&lt;filename&gt; is the name of a log file to process, defaults to #{defaultfn}&quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-string">&quot;&quot;</span>
+        <span class="ruby-identifier">ftype</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">?</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">ftype</span>(<span class="ruby-identifier">filename</span>) <span class="ruby-operator">:</span> <span class="ruby-string">&quot;Non Existant&quot;</span>
+        <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;Error: #{filename} is #{ftype} and is unable to be read.  It can not be processed.&quot;</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">readable</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

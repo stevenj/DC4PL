@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Average - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-3C-3C">#&lt;&lt;</a>
+    
+    <li ><a href="#method-i-mean">#mean</a>
+    
+    <li ><a href="#method-i-median">#median</a>
+    
+    <li ><a href="#method-i-mode">#mode</a>
+    
+    <li ><a href="#method-i-range">#range</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Average">
+  <h1 id="class-Average" class="class">
+    class Average
+  </h1>
+
+  <section class="description">
+    
+<p>Store data and then report statistical summaries on the data when
+requested. Base Class, Use <a href="Average_LoMem.html">Average_LoMem</a>
+or <a href="Average_Fast.html">Average_Fast</a> depending on your
+requirements.</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-count" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">count</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Count of data items stored</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-hi" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">hi</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Highest Value stored</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-lo" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">lo</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Lowest Value stored</p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Create an averaging data store</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/Average.rb, line 36</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+    <span class="ruby-ivar">@total</span> = <span class="ruby-value">0</span>                <span class="ruby-comment"># The total of all stored values</span>
+    <span class="ruby-ivar">@count</span> = <span class="ruby-value">0.0</span>              <span class="ruby-comment"># Count of all values stored</span>
+    <span class="ruby-ivar">@quantum</span> = <span class="ruby-constant">Hash</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>)    <span class="ruby-comment"># A count of each occurrence of each unique value.</span>
+    <span class="ruby-ivar">@hi</span> = <span class="ruby-keyword">nil</span>                 <span class="ruby-comment"># Highest known value</span>
+    <span class="ruby-ivar">@lo</span> = <span class="ruby-keyword">nil</span>                 <span class="ruby-comment"># Lowest known value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-3C-3C" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">&lt;&lt;</span><span
+            class="method-args">(value)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Add a value to the averaged data</p>
+
+<h4 id="method-i-3C-3C-label-Parameters">Parameters<span><a href="#method-i-3C-3C-label-Parameters">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>value</code>  - the value to add</p>
+</li></ul>
+
+<h4 id="method-i-3C-3C-label-Returns">Returns<span><a href="#method-i-3C-3C-label-Returns">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p>the number of items added to be averaged</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="3C-3C-source">
+            <pre><span class="ruby-comment"># File lib/Average.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">value</span>)
+    <span class="ruby-comment"># Keep track of highest and lowest values</span>
+    <span class="ruby-ivar">@hi</span> = <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@hi</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@hi</span>)
+    <span class="ruby-ivar">@lo</span> = <span class="ruby-identifier">value</span> <span class="ruby-keyword">if</span> (<span class="ruby-ivar">@lo</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">value</span> <span class="ruby-operator">&lt;</span> <span class="ruby-ivar">@lo</span>)
+
+    <span class="ruby-ivar">@total</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">value</span>         <span class="ruby-comment"># Accumulate all values.</span>
+    <span class="ruby-ivar">@quantum</span>[<span class="ruby-identifier">value</span>] <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>    <span class="ruby-comment"># Increase the count of each occurence of a value</span>
+    <span class="ruby-ivar">@count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>             <span class="ruby-comment"># Increase count of all values stored</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-mean" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">mean</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Get the mean of values stored to-date</p>
+
+<h4 id="method-i-mean-label-Returns">Returns<span><a href="#method-i-mean-label-Returns">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li><ul><li>
+<p>the mean value of the data, or nil if no data</p>
+</li></ul>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="mean-source">
+            <pre><span class="ruby-comment"># File lib/Average.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">mean</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@count</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@total</span><span class="ruby-operator">/</span><span class="ruby-ivar">@count</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-median" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">median</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Median is not defined in this class, choose an implementation below
+Otherwise, this class can be used, just not this method.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="median-source">
+            <pre><span class="ruby-comment"># File lib/Average.rb, line 95</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">median</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&#39;this method should be overriden and return the median of the data&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-mode" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">mode</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return the mode of the values stored to-date</p>
+
+<h4 id="method-i-mode-label-Returns">Returns<span><a href="#method-i-mode-label-Returns">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>mode</code>  - the mode value array or most prevalent values</p>
+
+<pre>- nil if no data has been stored.</pre>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="mode-source">
+            <pre><span class="ruby-comment"># File lib/Average.rb, line 80</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">mode</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+    <span class="ruby-identifier">mode</span>=[]
+    <span class="ruby-ivar">@quantum</span>.<span class="ruby-identifier">sort_by</span> { <span class="ruby-operator">|</span> <span class="ruby-identifier">val</span>, <span class="ruby-identifier">cnt</span> <span class="ruby-operator">|</span> <span class="ruby-identifier">cnt</span> }.<span class="ruby-identifier">reverse_each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">val</span><span class="ruby-operator">|</span>
+        <span class="ruby-keyword">if</span> (<span class="ruby-identifier">mode</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-operator">||</span> (<span class="ruby-ivar">@quantum</span>[<span class="ruby-identifier">mode</span>[<span class="ruby-value">-1</span>]] <span class="ruby-operator">==</span> <span class="ruby-identifier">val</span>[<span class="ruby-value">1</span>]))
+            <span class="ruby-identifier">mode</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">val</span>[<span class="ruby-value">0</span>]
+        <span class="ruby-keyword">else</span>
+            <span class="ruby-keyword">break</span>
+        <span class="ruby-keyword">end</span>
+    }
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">mode</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-range" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">range</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return the range of the stored items.</p>
+
+<h4 id="method-i-range-label-Returns">Returns<span><a href="#method-i-range-label-Returns">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>range</code> - the range of stored values.</p>
+
+<pre>- nil if nothing stored</pre>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="range-source">
+            <pre><span class="ruby-comment"># File lib/Average.rb, line 106</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">range</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@count</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+    <span class="ruby-ivar">@hi</span><span class="ruby-operator">-</span><span class="ruby-ivar">@lo</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

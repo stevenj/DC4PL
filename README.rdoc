@@ -1,0 +1,33 @@
+= \PlayLabDC - PlayLab Developer Challenge
+
+home :: https://github.com/stevenj/DC4PL
+
+== Description
+
+This is the developer challenge for PlayLab, written by Steven Johnson.
+The Program was written against ruby2.1 and has only been tested against ruby2.1
+
+== Executing
+
+  $ ruby ./lib/PlayLabDC.rb
+
+or
+
+  $ ./lib/PlayLabDC.rb
+
+Will run the program and the output will be displayed on the console.
+
+Everything else is controlled by the rakefile.
+
+  $ rake2.1
+
+Runs the tests and updates the documentation
+
+  $ rake2.1 test
+
+Just runs the test cases
+
+  $ rake2.1 rdoc
+
+Generates the documentation.
+

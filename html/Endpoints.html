@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class Endpoints - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-3C-3C">#&lt;&lt;</a>
+    
+    <li ><a href="#method-i-add">#add</a>
+    
+    <li ><a href="#method-i-each">#each</a>
+    
+    <li ><a href="#method-i-get_endpoint">#get_endpoint</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-Endpoints">
+  <h1 id="class-Endpoints" class="class">
+    class Endpoints
+  </h1>
+
+  <section class="description">
+    
+<p>A collection of endpoints</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <section class="attribute-method-details" class="method-section">
+      <header>
+        <h3>Attributes</h3>
+      </header>
+
+      
+      <div id="attribute-i-endpoints" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">endpoints</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Collection of endpoints</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-unprocessed_lines" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">unprocessed_lines</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Count of lines of data which dont match an <a
+href="Endpoint.html">Endpoint</a></p>
+        
+        </div>
+      </div>
+      
+    </section>
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialise the <a href="Endpoint.html">Endpoint</a> collection</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/Endpoint.rb, line 147</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>
+    <span class="ruby-comment"># The collection of known endpoints.</span>
+    <span class="ruby-ivar">@endpoints</span> = {}
+    <span class="ruby-comment"># The number of data entries didnt match a known endpoint.</span>
+    <span class="ruby-ivar">@unprocessed_lines</span> = <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-3C-3C" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">&lt;&lt;</span><span
+            class="method-args">(endpoint)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Add an endpoint to the collection</p>
+
+<h4 id="method-i-3C-3C-label-Parameters">Parameters<span><a href="#method-i-3C-3C-label-Parameters">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>endpoint</code>    - An array defining the endpoint.</p>
+</li><li>
+<p>+<a href="0">endpoint</a>+ - The Method of the endpoint. (string)</p>
+</li><li>
+<p>+<a href="1">endpoint</a>+ - The Path of the endpoint. (string)</p>
+</li></ul>
+
+<h4 id="method-i-3C-3C-label-Returns">Returns<span><a href="#method-i-3C-3C-label-Returns">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p>The new <a href="Endpoint.html">Endpoint</a> <a
+href="Object.html">Object</a></p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="3C-3C-source">
+            <pre><span class="ruby-comment"># File lib/Endpoint.rb, line 166</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">&lt;&lt;</span>(<span class="ruby-identifier">endpoint</span>)
+    <span class="ruby-identifier">e_id</span> = <span class="ruby-constant">Endpoint</span>.<span class="ruby-identifier">make_endpoint_id</span>(<span class="ruby-identifier">endpoint</span>)
+    <span class="ruby-identifier">raise</span> <span class="ruby-string">&quot;Cant add the same endpoint twice&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@endpoints</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">e_id</span>)
+    <span class="ruby-ivar">@endpoints</span>[<span class="ruby-identifier">e_id</span>] = <span class="ruby-constant">Endpoint</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">endpoint</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-add" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">add</span><span
+            class="method-args">(data)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Add data to the endpoint it belongs to.</p>
+
+<h4 id="method-i-add-label-Parameters">Parameters<span><a href="#method-i-add-label-Parameters">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>data</code> - The Data to add from the endpoint, as tokenised by
+LineTokeizer.rb</p>
+</li></ul>
+
+<h4 id="method-i-add-label-Returns">Returns<span><a href="#method-i-add-label-Returns">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>true</code>  - The <a href="Endpoint.html">Endpoint</a> exists and
+the Data was added to it.</p>
+</li><li>
+<p><code>false</code> - The <a href="Endpoint.html">Endpoint</a> does not
+exist.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="add-source">
+            <pre><span class="ruby-comment"># File lib/Endpoint.rb, line 202</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">add</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-comment"># Get the endpoint ID</span>
+    <span class="ruby-identifier">ep</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">get_endpoint</span>(<span class="ruby-identifier">data</span>[<span class="ruby-string">&quot;method&quot;</span>],<span class="ruby-identifier">data</span>[<span class="ruby-string">&quot;path&quot;</span>])
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">ep</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">then</span>
+        <span class="ruby-comment"># Unknown Endpoint, so just count the number of lines we throw</span>
+        <span class="ruby-ivar">@unprocessed_lines</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-identifier">ep</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">data</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-each" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">each</span><span
+            class="method-args">() { |ep| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Allow is to iterate through the collected endpoint data</p>
+
+<h4 id="method-i-each-label-Parameters">Parameters<span><a href="#method-i-each-label-Parameters">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>ep</code> - The Next <a href="Endpoint.html">Endpoint</a> object held
+in the collection.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="each-source">
+            <pre><span class="ruby-comment"># File lib/Endpoint.rb, line 221</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each</span>()
+    <span class="ruby-comment"># Iterate the endpoints, just returning the endpoint objects.</span>
+    <span class="ruby-ivar">@endpoints</span>.<span class="ruby-identifier">each</span>  { <span class="ruby-operator">|</span> <span class="ruby-identifier">ep</span> <span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span> <span class="ruby-identifier">ep</span>[<span class="ruby-value">1</span>] }
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-get_endpoint" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">get_endpoint</span><span
+            class="method-args">(method,path)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the endpoint selected by a method and path</p>
+
+<h4 id="method-i-get_endpoint-label-Parameters">Parameters<span><a href="#method-i-get_endpoint-label-Parameters">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>method</code> - The Method of the endpoint. (string)</p>
+</li><li>
+<p><code>path</code>   - The Path of the endpoint. (string)</p>
+</li></ul>
+
+<h4 id="method-i-get_endpoint-label-Returns">Returns<span><a href="#method-i-get_endpoint-label-Returns">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p>The <a href="Endpoint.html">Endpoint</a> object selected by the Method and
+Path</p>
+</li><li>
+<p><code>nil</code> - No Matching <a href="Endpoint.html">Endpoint</a> <a
+href="Object.html">Object</a>.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="get_endpoint-source">
+            <pre><span class="ruby-comment"># File lib/Endpoint.rb, line 184</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">get_endpoint</span>(<span class="ruby-identifier">method</span>,<span class="ruby-identifier">path</span>)
+    <span class="ruby-ivar">@endpoints</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span> <span class="ruby-identifier">ep</span> <span class="ruby-operator">|</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-identifier">ep</span>[<span class="ruby-value">1</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">ep</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">is_endpoint?</span>(<span class="ruby-identifier">method</span>,<span class="ruby-identifier">path</span>)
+    }
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+

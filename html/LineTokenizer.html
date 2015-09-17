@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>class LineTokenizer - RDoc Documentation</title>
+
+<link href="./fonts.css" rel="stylesheet">
+<link href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/navigation.js"></script>
+<script src="./js/search_index.js"></script>
+<script src="./js/search.js"></script>
+<script src="./js/searcher.js"></script>
+<script src="./js/darkfish.js"></script>
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="Object.html">Object</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-5B-5D">#[]</a>
+    
+    <li ><a href="#method-i-key_to_int">#key_to_int</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-LineTokenizer">
+  <h1 id="class-LineTokenizer" class="class">
+    class LineTokenizer
+  </h1>
+
+  <section class="description">
+    
+<p>Tokenize the line read from a log into its component data</p>
+
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Class Methods</h3>
+       </header>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(line)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialise the tokenised line object</p>
+
+<h4 id="method-c-new-label-Parameters">Parameters<span><a href="#method-c-new-label-Parameters">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>line</code>  - the line read from the log file.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/LineTokenizer.rb, line 30</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">line</span>)
+
+    <span class="ruby-comment"># convert a key to an integer</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-comment"># ==== Parameters</span>
+    <span class="ruby-comment">#</span>
+    <span class="ruby-comment"># * +key+  - the key to convert.</span>
+    <span class="ruby-keyword">def</span> <span class="ruby-identifier">key_to_int</span>(<span class="ruby-identifier">key</span>)
+        <span class="ruby-comment"># Dont do anything if key doesnt exist</span>
+        <span class="ruby-keyword">if</span> <span class="ruby-ivar">@tokens</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+            <span class="ruby-comment"># check if the value is an integer</span>
+
+            <span class="ruby-keyword">if</span> ((<span class="ruby-ivar">@tokens</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^\d+/</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">then</span>
+                <span class="ruby-comment"># Covnert the value of the key to an numeric value</span>
+                <span class="ruby-ivar">@tokens</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-ivar">@tokens</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">to_i</span>
+            <span class="ruby-keyword">else</span>
+                <span class="ruby-comment"># remove the key from the hash</span>
+                <span class="ruby-ivar">@tokens</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)
+            <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># Extract the contents of a Line for further easy processing.</span>
+    <span class="ruby-comment"># Line Format is ISO_DATE_STRING ROUTER [key=value, ...]</span>
+    <span class="ruby-identifier">time</span>, <span class="ruby-identifier">router</span>, <span class="ruby-identifier">kvpairs</span> = <span class="ruby-identifier">line</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot; &quot;</span>, <span class="ruby-value">3</span>)
+
+    <span class="ruby-comment"># Build the hash of line data from the kvpairs.</span>
+    <span class="ruby-ivar">@tokens</span> = <span class="ruby-constant">Hash</span>[<span class="ruby-identifier">kvpairs</span>.<span class="ruby-identifier">split</span>.<span class="ruby-identifier">map</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">kv</span><span class="ruby-operator">|</span> <span class="ruby-identifier">kv</span>.<span class="ruby-identifier">split</span>(<span class="ruby-string">&quot;=&quot;</span>)}] <span class="ruby-keyword">rescue</span> {}
+
+    <span class="ruby-comment"># Store the router info into the Hash</span>
+    <span class="ruby-ivar">@tokens</span>[<span class="ruby-string">&quot;router&quot;</span>] = <span class="ruby-identifier">router</span>
+
+    <span class="ruby-comment"># Store Date/Time (which is an ISO Date) into the Hash</span>
+    <span class="ruby-keyword">begin</span>
+        <span class="ruby-ivar">@tokens</span>[<span class="ruby-string">&quot;time&quot;</span>] = <span class="ruby-constant">DateTime</span>.<span class="ruby-identifier">iso8601</span>(<span class="ruby-identifier">time</span>)
+    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">ArgumentError</span>
+        <span class="ruby-comment"># If the Date/Time can not be processed we do not add a &quot;time&quot;</span>
+        <span class="ruby-comment"># record to the fields.</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># Convert tokens which should be numbers to integers</span>
+    <span class="ruby-identifier">key_to_int</span>(<span class="ruby-string">&quot;connect&quot;</span>)
+    <span class="ruby-identifier">key_to_int</span>(<span class="ruby-string">&quot;service&quot;</span>)
+    <span class="ruby-identifier">key_to_int</span>(<span class="ruby-string">&quot;status&quot;</span>)
+    <span class="ruby-identifier">key_to_int</span>(<span class="ruby-string">&quot;bytes&quot;</span>)
+
+    <span class="ruby-comment"># validate and convert each field extracted to ensure its a well formed line.</span>
+    <span class="ruby-comment"># Time is valid and all the Key/Value pairs we expect are present. Extra ones are ignored.</span>
+
+    <span class="ruby-comment"># If not ALL the data is valid, then none of the data is valid.</span>
+    <span class="ruby-ivar">@tokens</span> = {} <span class="ruby-keyword">if</span> ([<span class="ruby-string">&quot;time&quot;</span>, <span class="ruby-string">&quot;router&quot;</span>,
+                      <span class="ruby-string">&quot;at&quot;</span>, <span class="ruby-string">&quot;method&quot;</span>, <span class="ruby-string">&quot;path&quot;</span>, <span class="ruby-string">&quot;host&quot;</span>, <span class="ruby-string">&quot;fwd&quot;</span>, <span class="ruby-string">&quot;dyno&quot;</span>,
+                      <span class="ruby-string">&quot;connect&quot;</span>, <span class="ruby-string">&quot;service&quot;</span>, <span class="ruby-string">&quot;status&quot;</span>, <span class="ruby-string">&quot;bytes&quot;</span>] <span class="ruby-operator">-</span> <span class="ruby-ivar">@tokens</span>.<span class="ruby-identifier">keys</span>).<span class="ruby-identifier">any?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-5B-5D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">[]</span><span
+            class="method-args">(key)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return the tokenised data from the line</p>
+
+<h4 id="method-i-5B-5D-label-Parameters">Parameters<span><a href="#method-i-5B-5D-label-Parameters">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>key</code>  - the key of the data to read.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="5B-5D-source">
+            <pre><span class="ruby-comment"># File lib/LineTokenizer.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-ivar">@tokens</span>[<span class="ruby-identifier">key</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-key_to_int" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">key_to_int</span><span
+            class="method-args">(key)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>convert a key to an integer</p>
+
+<h4 id="method-i-key_to_int-label-Parameters">Parameters<span><a href="#method-i-key_to_int-label-Parameters">&para;</a> <a href="#documentation">&uarr;</a></span></h4>
+<ul><li>
+<p><code>key</code>  - the key to convert.</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="key_to_int-source">
+            <pre><span class="ruby-comment"># File lib/LineTokenizer.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">key_to_int</span>(<span class="ruby-identifier">key</span>)
+    <span class="ruby-comment"># Dont do anything if key doesnt exist</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@tokens</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+        <span class="ruby-comment"># check if the value is an integer</span>
+
+        <span class="ruby-keyword">if</span> ((<span class="ruby-ivar">@tokens</span>[<span class="ruby-identifier">key</span>] <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^\d+/</span>) <span class="ruby-operator">==</span> <span class="ruby-value">0</span>) <span class="ruby-keyword">then</span>
+            <span class="ruby-comment"># Covnert the value of the key to an numeric value</span>
+            <span class="ruby-ivar">@tokens</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-ivar">@tokens</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">to_i</span>
+        <span class="ruby-keyword">else</span>
+            <span class="ruby-comment"># remove the key from the hash</span>
+            <span class="ruby-ivar">@tokens</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)
+        <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://rdoc.rubyforge.org">RDoc</a> 4.1.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
